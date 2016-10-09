@@ -1,0 +1,444 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7A95EF0C1DAAFC3100297A17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A95EF0B1DAAFC3100297A17 /* AppDelegate.swift */; };
+		7A95EF0E1DAAFC3100297A17 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A95EF0D1DAAFC3100297A17 /* ViewController.swift */; };
+		7A95EF111DAAFC3200297A17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A95EF0F1DAAFC3200297A17 /* Main.storyboard */; };
+		7A95EF141DAAFC3200297A17 /* VoiceSnap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A95EF121DAAFC3200297A17 /* VoiceSnap.xcdatamodeld */; };
+		7A95EF161DAAFC3200297A17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A95EF151DAAFC3200297A17 /* Assets.xcassets */; };
+		7A95EF191DAAFC3200297A17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A95EF171DAAFC3200297A17 /* LaunchScreen.storyboard */; };
+		7A95EF241DAAFC3200297A17 /* VoiceSnapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A95EF231DAAFC3200297A17 /* VoiceSnapTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7A95EF201DAAFC3200297A17 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A95EF001DAAFC3100297A17 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A95EF071DAAFC3100297A17;
+			remoteInfo = VoiceSnap;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7A95EF081DAAFC3100297A17 /* VoiceSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoiceSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A95EF0B1DAAFC3100297A17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7A95EF0D1DAAFC3100297A17 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7A95EF101DAAFC3200297A17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7A95EF131DAAFC3200297A17 /* VoiceSnap.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VoiceSnap.xcdatamodel; sourceTree = "<group>"; };
+		7A95EF151DAAFC3200297A17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7A95EF181DAAFC3200297A17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7A95EF1A1DAAFC3200297A17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A95EF1F1DAAFC3200297A17 /* VoiceSnapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoiceSnapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A95EF231DAAFC3200297A17 /* VoiceSnapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceSnapTests.swift; sourceTree = "<group>"; };
+		7A95EF251DAAFC3200297A17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7A95EF051DAAFC3100297A17 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A95EF1C1DAAFC3200297A17 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7A95EEFF1DAAFC3100297A17 = {
+			isa = PBXGroup;
+			children = (
+				7A95EF0A1DAAFC3100297A17 /* VoiceSnap */,
+				7A95EF221DAAFC3200297A17 /* VoiceSnapTests */,
+				7A95EF091DAAFC3100297A17 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7A95EF091DAAFC3100297A17 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7A95EF081DAAFC3100297A17 /* VoiceSnap.app */,
+				7A95EF1F1DAAFC3200297A17 /* VoiceSnapTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7A95EF0A1DAAFC3100297A17 /* VoiceSnap */ = {
+			isa = PBXGroup;
+			children = (
+				7A95EF0B1DAAFC3100297A17 /* AppDelegate.swift */,
+				7A95EF0D1DAAFC3100297A17 /* ViewController.swift */,
+				7A95EF0F1DAAFC3200297A17 /* Main.storyboard */,
+				7A95EF151DAAFC3200297A17 /* Assets.xcassets */,
+				7A95EF171DAAFC3200297A17 /* LaunchScreen.storyboard */,
+				7A95EF1A1DAAFC3200297A17 /* Info.plist */,
+				7A95EF121DAAFC3200297A17 /* VoiceSnap.xcdatamodeld */,
+			);
+			path = VoiceSnap;
+			sourceTree = "<group>";
+		};
+		7A95EF221DAAFC3200297A17 /* VoiceSnapTests */ = {
+			isa = PBXGroup;
+			children = (
+				7A95EF231DAAFC3200297A17 /* VoiceSnapTests.swift */,
+				7A95EF251DAAFC3200297A17 /* Info.plist */,
+			);
+			path = VoiceSnapTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7A95EF071DAAFC3100297A17 /* VoiceSnap */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A95EF281DAAFC3200297A17 /* Build configuration list for PBXNativeTarget "VoiceSnap" */;
+			buildPhases = (
+				7A95EF041DAAFC3100297A17 /* Sources */,
+				7A95EF051DAAFC3100297A17 /* Frameworks */,
+				7A95EF061DAAFC3100297A17 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VoiceSnap;
+			productName = VoiceSnap;
+			productReference = 7A95EF081DAAFC3100297A17 /* VoiceSnap.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7A95EF1E1DAAFC3200297A17 /* VoiceSnapTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A95EF2B1DAAFC3200297A17 /* Build configuration list for PBXNativeTarget "VoiceSnapTests" */;
+			buildPhases = (
+				7A95EF1B1DAAFC3200297A17 /* Sources */,
+				7A95EF1C1DAAFC3200297A17 /* Frameworks */,
+				7A95EF1D1DAAFC3200297A17 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A95EF211DAAFC3200297A17 /* PBXTargetDependency */,
+			);
+			name = VoiceSnapTests;
+			productName = VoiceSnapTests;
+			productReference = 7A95EF1F1DAAFC3200297A17 /* VoiceSnapTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7A95EF001DAAFC3100297A17 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = "Eric Hodgins";
+				TargetAttributes = {
+					7A95EF071DAAFC3100297A17 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = E3QZ6M9437;
+						ProvisioningStyle = Automatic;
+					};
+					7A95EF1E1DAAFC3200297A17 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = E3QZ6M9437;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7A95EF071DAAFC3100297A17;
+					};
+				};
+			};
+			buildConfigurationList = 7A95EF031DAAFC3100297A17 /* Build configuration list for PBXProject "VoiceSnap" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7A95EEFF1DAAFC3100297A17;
+			productRefGroup = 7A95EF091DAAFC3100297A17 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7A95EF071DAAFC3100297A17 /* VoiceSnap */,
+				7A95EF1E1DAAFC3200297A17 /* VoiceSnapTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7A95EF061DAAFC3100297A17 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A95EF191DAAFC3200297A17 /* LaunchScreen.storyboard in Resources */,
+				7A95EF161DAAFC3200297A17 /* Assets.xcassets in Resources */,
+				7A95EF111DAAFC3200297A17 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A95EF1D1DAAFC3200297A17 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7A95EF041DAAFC3100297A17 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A95EF141DAAFC3200297A17 /* VoiceSnap.xcdatamodeld in Sources */,
+				7A95EF0E1DAAFC3100297A17 /* ViewController.swift in Sources */,
+				7A95EF0C1DAAFC3100297A17 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A95EF1B1DAAFC3200297A17 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A95EF241DAAFC3200297A17 /* VoiceSnapTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7A95EF211DAAFC3200297A17 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A95EF071DAAFC3100297A17 /* VoiceSnap */;
+			targetProxy = 7A95EF201DAAFC3200297A17 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7A95EF0F1DAAFC3200297A17 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A95EF101DAAFC3200297A17 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7A95EF171DAAFC3200297A17 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A95EF181DAAFC3200297A17 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7A95EF261DAAFC3200297A17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7A95EF271DAAFC3200297A17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7A95EF291DAAFC3200297A17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = E3QZ6M9437;
+				INFOPLIST_FILE = VoiceSnap/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.VoiceSnap;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		7A95EF2A1DAAFC3200297A17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = E3QZ6M9437;
+				INFOPLIST_FILE = VoiceSnap/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.VoiceSnap;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		7A95EF2C1DAAFC3200297A17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = E3QZ6M9437;
+				INFOPLIST_FILE = VoiceSnapTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.VoiceSnapTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VoiceSnap.app/VoiceSnap";
+			};
+			name = Debug;
+		};
+		7A95EF2D1DAAFC3200297A17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = E3QZ6M9437;
+				INFOPLIST_FILE = VoiceSnapTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hodginsEric.VoiceSnapTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VoiceSnap.app/VoiceSnap";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7A95EF031DAAFC3100297A17 /* Build configuration list for PBXProject "VoiceSnap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A95EF261DAAFC3200297A17 /* Debug */,
+				7A95EF271DAAFC3200297A17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A95EF281DAAFC3200297A17 /* Build configuration list for PBXNativeTarget "VoiceSnap" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A95EF291DAAFC3200297A17 /* Debug */,
+				7A95EF2A1DAAFC3200297A17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7A95EF2B1DAAFC3200297A17 /* Build configuration list for PBXNativeTarget "VoiceSnapTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A95EF2C1DAAFC3200297A17 /* Debug */,
+				7A95EF2D1DAAFC3200297A17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7A95EF121DAAFC3200297A17 /* VoiceSnap.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7A95EF131DAAFC3200297A17 /* VoiceSnap.xcdatamodel */,
+			);
+			currentVersion = 7A95EF131DAAFC3200297A17 /* VoiceSnap.xcdatamodel */;
+			path = VoiceSnap.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 7A95EF001DAAFC3100297A17 /* Project object */;
+}
