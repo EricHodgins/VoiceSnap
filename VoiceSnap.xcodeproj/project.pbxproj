@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A449D011DAC6A5D005C54D0 /* SaveTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A449D001DAC6A5D005C54D0 /* SaveTableViewController.swift */; };
 		7A95EF0C1DAAFC3100297A17 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A95EF0B1DAAFC3100297A17 /* AppDelegate.swift */; };
-		7A95EF0E1DAAFC3100297A17 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A95EF0D1DAAFC3100297A17 /* ViewController.swift */; };
-		7A95EF111DAAFC3200297A17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A95EF0F1DAAFC3200297A17 /* Main.storyboard */; };
+		7A95EF0E1DAAFC3100297A17 /* RecordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A95EF0D1DAAFC3100297A17 /* RecordController.swift */; };
 		7A95EF141DAAFC3200297A17 /* VoiceSnap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A95EF121DAAFC3200297A17 /* VoiceSnap.xcdatamodeld */; };
 		7A95EF161DAAFC3200297A17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A95EF151DAAFC3200297A17 /* Assets.xcassets */; };
 		7A95EF191DAAFC3200297A17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A95EF171DAAFC3200297A17 /* LaunchScreen.storyboard */; };
 		7A95EF241DAAFC3200297A17 /* VoiceSnapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A95EF231DAAFC3200297A17 /* VoiceSnapTests.swift */; };
+		7A95EF2F1DAAFC7500297A17 /* CoreDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A95EF2E1DAAFC7500297A17 /* CoreDataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,10 +28,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A449D001DAC6A5D005C54D0 /* SaveTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveTableViewController.swift; sourceTree = "<group>"; };
 		7A95EF081DAAFC3100297A17 /* VoiceSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoiceSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A95EF0B1DAAFC3100297A17 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7A95EF0D1DAAFC3100297A17 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		7A95EF101DAAFC3200297A17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7A95EF0D1DAAFC3100297A17 /* RecordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordController.swift; sourceTree = "<group>"; };
 		7A95EF131DAAFC3200297A17 /* VoiceSnap.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VoiceSnap.xcdatamodel; sourceTree = "<group>"; };
 		7A95EF151DAAFC3200297A17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A95EF181DAAFC3200297A17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +39,7 @@
 		7A95EF1F1DAAFC3200297A17 /* VoiceSnapTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoiceSnapTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A95EF231DAAFC3200297A17 /* VoiceSnapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceSnapTests.swift; sourceTree = "<group>"; };
 		7A95EF251DAAFC3200297A17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A95EF2E1DAAFC7500297A17 /* CoreDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +82,9 @@
 			isa = PBXGroup;
 			children = (
 				7A95EF0B1DAAFC3100297A17 /* AppDelegate.swift */,
-				7A95EF0D1DAAFC3100297A17 /* ViewController.swift */,
-				7A95EF0F1DAAFC3200297A17 /* Main.storyboard */,
+				7A95EF2E1DAAFC7500297A17 /* CoreDataController.swift */,
+				7A95EF0D1DAAFC3100297A17 /* RecordController.swift */,
+				7A449D001DAC6A5D005C54D0 /* SaveTableViewController.swift */,
 				7A95EF151DAAFC3200297A17 /* Assets.xcassets */,
 				7A95EF171DAAFC3200297A17 /* LaunchScreen.storyboard */,
 				7A95EF1A1DAAFC3200297A17 /* Info.plist */,
@@ -186,7 +189,6 @@
 			files = (
 				7A95EF191DAAFC3200297A17 /* LaunchScreen.storyboard in Resources */,
 				7A95EF161DAAFC3200297A17 /* Assets.xcassets in Resources */,
-				7A95EF111DAAFC3200297A17 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,8 +206,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A449D011DAC6A5D005C54D0 /* SaveTableViewController.swift in Sources */,
 				7A95EF141DAAFC3200297A17 /* VoiceSnap.xcdatamodeld in Sources */,
-				7A95EF0E1DAAFC3100297A17 /* ViewController.swift in Sources */,
+				7A95EF0E1DAAFC3100297A17 /* RecordController.swift in Sources */,
+				7A95EF2F1DAAFC7500297A17 /* CoreDataController.swift in Sources */,
 				7A95EF0C1DAAFC3100297A17 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,14 +233,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		7A95EF0F1DAAFC3200297A17 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7A95EF101DAAFC3200297A17 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		7A95EF171DAAFC3200297A17 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -416,6 +412,7 @@
 				7A95EF2A1DAAFC3200297A17 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7A95EF2B1DAAFC3200297A17 /* Build configuration list for PBXNativeTarget "VoiceSnapTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +421,7 @@
 				7A95EF2D1DAAFC3200297A17 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
