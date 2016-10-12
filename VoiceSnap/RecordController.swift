@@ -108,26 +108,6 @@ extension RecordController: AVAudioRecorderDelegate {
             playButton.isEnabled = false
             recordButton.setTitle("STOP", for: .normal)
             audioRecordingDelegate.startRecording()
-//            let session = AVAudioSession.sharedInstance()
-//            
-//            do {
-//                try session.setCategory(AVAudioSessionCategoryPlayAndRecord, with: .defaultToSpeaker)
-//                try session.setActive(true)
-//                let settings = [
-//                    AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
-//                    AVSampleRateKey: 44100,
-//                    AVNumberOfChannelsKey: 2,
-//                    AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
-//                ]
-//                // 4. create the audio recording, and assign ourselves as the delegate
-//                audioRecorder = try AVAudioRecorder(url: audioURL, settings: settings)
-//                audioRecorder.delegate = self
-//                audioRecorder.isMeteringEnabled = true
-//                audioRecorder.prepareToRecord()
-//                audioRecorder.record()
-//            } catch {
-//                print(error)
-//            }
         } else {
             stopRecording()
             playButton.isEnabled = true
@@ -135,10 +115,6 @@ extension RecordController: AVAudioRecorderDelegate {
     }    
     
     func stopRecording() {
-//        audioRecorder.stop()
-//        let audioSession = AVAudioSession.sharedInstance()
-//        try! audioSession.setActive(false)
-        
         audioRecordingDelegate.stopRecording()
         recordButton.setTitle("RECORD", for: .normal)
         audioPlayingDelegate.createAudioPlayer()
