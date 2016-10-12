@@ -139,68 +139,24 @@ extension RecordController: AVAudioRecorderDelegate {
         
         recordButton.setTitle("RECORD", for: .normal)
         
-        createAudioPlayer()
+        audioPlayingDelegate.createAudioPlayer()
     }
 
 }
 
 
 extension RecordController: AVAudioPlayerDelegate {
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        print("Audio player finished playing.")
-    }
     
     func playRecording() {
         audioPlayingDelegate.playRecording()
-//        if audioPlayer != nil {
-//            audioPlayer.stop()
-//            audioEngine.stop()
-//            audioEngine.reset()
-//            audioPlayer.play()
-//        } else if saveRecording() {
-//            createAudioPlayer()
-//            let session = AVAudioSession.sharedInstance()
-//            do {
-//                try session.setCategory(AVAudioSessionCategoryPlayback, with: .defaultToSpeaker)
-//            } catch {
-//                print(error)
-//            }
-//            audioPlayer.play()
-//        }
-        
     }
-    
-    func createAudioPlayer() {
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: audioURL)
-            audioPlayer.enableRate = true
-            audioPlayer.delegate = self
-            audioPlayer.prepareToPlay()
-        } catch {
-            print(error)
-        }
-    }
+
 }
 
+
+// MARK: Save Recording
+
 extension RecordController {
-    func saveRecording() -> Bool {
-        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        
-        do {
-            let directoryContents = try FileManager.default.contentsOfDirectory(at: documentsURL, includingPropertiesForKeys: nil, options: [])
-            for p in directoryContents {
-                print(p)
-            }
-            if directoryContents.count > 0 {
-                audioURL = directoryContents.last!
-                return true
-            } else {
-                return false
-            }
-        } catch {
-            return false
-        }
-    }
     
     func saveAndRenameRecording() {
         let saveController = SaveTableViewController()
