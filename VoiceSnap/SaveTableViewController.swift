@@ -96,17 +96,41 @@ class SaveTableViewController: UITableViewController {
 
 extension SaveTableViewController {
     func save() {
+        
+        if saveTextField.text == "" {
+            return
+        }
+        
         let docDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         print(docDir)
-        var oldURL = docDir.appendingPathComponent("audioFileName.m4a")
-        //let newURL = docDir.appendingPathComponent("NewItem.m4a")
-        oldURL.setTemporaryResourceValue("NewItem.m4a", forKey: .nameKey)
+        let oldURL = docDir.appendingPathComponent("TempFileName.m4a")
+        let newURL = docDir.appendingPathComponent("\(saveTextField.text!).m4a")
         
-        //try! FileManager.default.moveItem(at: oldURL, to: newURL)
+        do {
+            try FileManager.default.moveItem(at: oldURL, to: newURL)
+        } catch {
+            
+        }
+        
+        checkDocumentsDirectory()
+        
+        dismiss(animated: true, completion: nil)
     }
     
     func cancel() {
         dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+extension SaveTableViewController {
+    //helper checks
+    func checkDocumentsDirectory() {
+        let docDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let directoryContents = try! FileManager.default.contentsOfDirectory(at: docDir, includingPropertiesForKeys: nil, options: [])
+        for p in directoryContents {
+            print(p)
+        }
     }
 }
 

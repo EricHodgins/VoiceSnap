@@ -15,15 +15,17 @@ class RecordController: UIViewController {
     var audioPlayer: AVAudioPlayer!
     var audioEngine: AVAudioEngine!
     
-    
     var audioRecorder: AVAudioRecorder!
+    
+    lazy var audioPlayingDelegate: AudioPlayingDelegate = {
+        let apd = AudioPlayingDelegate(audioPlayer: self.audioPlayer, audioEngine: self.audioEngine, urlForAudioPath: self.audioURL)
+        return apd
+    }()
     
     var audioURL: URL = {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentDirectory = paths.first!
-        
-        
-        let url = documentDirectory.appendingPathComponent("audioFileName.m4a")
+        let url = documentDirectory.appendingPathComponent("TempFileName.m4a")
         
         return url
     }()
@@ -38,7 +40,7 @@ class RecordController: UIViewController {
     lazy var playButton: UIButton = {
         let button = UIButton()
         button.setTitle("Play", for: .normal)
-        button.backgroundColor = UIColor.green
+        button.backgroundColor = UIColor(colorLiteralRed: 44/255, green: 121/255, blue: 64/255, alpha: 1.0)
         return button
     }()
     
@@ -53,7 +55,7 @@ class RecordController: UIViewController {
         super.viewDidLoad()
         
         AVAudioSession.sharedInstance().requestRecordPermission { (success) in
-            print(success)
+            print("permission granted: \(success)")
         }
         
         recordButton.addTarget(self, action: #selector(RecordController.startRecording), for: .touchUpInside)
@@ -97,7 +99,7 @@ extension RecordController: AVAudioRecorderDelegate {
     func startRecording() {
         
         if recordButton.titleLabel?.text == "RECORD" {
-        
+            playButton.isEnabled = false
             let session = AVAudioSession.sharedInstance()
             
             do {
@@ -121,6 +123,7 @@ extension RecordController: AVAudioRecorderDelegate {
             }
         } else {
             stopRecording()
+            playButton.isEnabled = true
         }
     }
     
@@ -147,33 +150,29 @@ extension RecordController: AVAudioPlayerDelegate {
         print("Audio player finished playing.")
     }
     
-    func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
-        print("Decode error.")
-    }
-    
     func playRecording() {
-        if audioPlayer != nil {
-            audioPlayer.stop()
-            audioEngine.stop()
-            audioEngine.reset()
-            audioPlayer.play()
-        } else if saveRecording() {
-            createAudioPlayer()
-            let session = AVAudioSession.sharedInstance()
-            do {
-                try session.setCategory(AVAudioSessionCategoryPlayback, with: .defaultToSpeaker)
-            } catch {
-                print(error)
-            }
-            audioPlayer.play()
-        }
+        audioPlayingDelegate.playRecording()
+//        if audioPlayer != nil {
+//            audioPlayer.stop()
+//            audioEngine.stop()
+//            audioEngine.reset()
+//            audioPlayer.play()
+//        } else if saveRecording() {
+//            createAudioPlayer()
+//            let session = AVAudioSession.sharedInstance()
+//            do {
+//                try session.setCategory(AVAudioSessionCategoryPlayback, with: .defaultToSpeaker)
+//            } catch {
+//                print(error)
+//            }
+//            audioPlayer.play()
+//        }
         
     }
     
     func createAudioPlayer() {
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: audioURL)
-            print(audioURL)
             audioPlayer.enableRate = true
             audioPlayer.delegate = self
             audioPlayer.prepareToPlay()
