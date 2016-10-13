@@ -102,7 +102,6 @@ extension SaveTableViewController {
         }
         
         let docDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        print(docDir)
         let oldURL = docDir.appendingPathComponent("TempFileName.m4a")
         let newURL = docDir.appendingPathComponent("\(saveTextField.text!).m4a")
         
@@ -112,7 +111,7 @@ extension SaveTableViewController {
             
         }
         
-        checkDocumentsDirectory()
+        showDocumentsDirectory()
         
         dismiss(animated: true, completion: nil)
     }
@@ -125,7 +124,7 @@ extension SaveTableViewController {
 
 extension SaveTableViewController {
     //helper checks
-    func checkDocumentsDirectory() {
+    func showDocumentsDirectory() {
         let docDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let directoryContents = try! FileManager.default.contentsOfDirectory(at: docDir, includingPropertiesForKeys: nil, options: [])
         for p in directoryContents {
