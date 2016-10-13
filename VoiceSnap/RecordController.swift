@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import CoreData
 import AVFoundation
 
 class RecordController: UIViewController {
+    
+    var fetchedResultsController: NSFetchedResultsController<Record>!
     
     var newSavedFileName: String?
     var audioPlayer: AVAudioPlayer!
@@ -69,6 +72,8 @@ class RecordController: UIViewController {
         saveButton.addTarget(self, action: #selector(RecordController.saveAndRenameRecording), for: .touchUpInside)
         
         audioEngine = AVAudioEngine()
+        
+        fetchAllRecords()
     }
     
     override func viewDidLayoutSubviews() {
@@ -144,7 +149,22 @@ extension RecordController {
 
 }
 
+// MARK: Fetching
 
+extension RecordController {
+    func fetchAllRecords() {
+        let request = Record.allRecordsFetchRequest()
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataController.sharedInstance.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            
+        }
+        
+        print(self.fetchedResultsController.fetchedObjects?.count)
+    }
+}
 
 
 

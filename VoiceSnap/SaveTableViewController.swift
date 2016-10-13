@@ -107,6 +107,8 @@ extension SaveTableViewController {
         
         do {
             try FileManager.default.moveItem(at: oldURL, to: newURL)
+            let _ = Record.record(withName: "\(saveTextField.text!)")
+            CoreDataController.sharedInstance.saveContext()
         } catch {
             
         }

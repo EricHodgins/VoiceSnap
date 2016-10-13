@@ -19,8 +19,21 @@ class Record: NSManagedObject {
         return record
     }
     
-    class func allRecordsFetchRequest() {
+    class func allRecordsFetchRequest() -> NSFetchRequest<Record> {
+        let fetchRequest = NSFetchRequest<Record>(entityName: Record.entityName)
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         
+        return fetchRequest
+    }
+}
+
+// MARK: - Helper
+extension Record {
+    func URLToDocumentsDirectory(withFileName name: String) -> URL {
+        let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let recordURL = documentsDirectoryURL.appendingPathComponent("\(name).m4a")
+        
+        return recordURL
     }
 }
 
