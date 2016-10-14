@@ -17,6 +17,7 @@ class RecordCell: UICollectionViewCell {
         contentView.backgroundColor = UIColor.orange
         contentView.addSubview(recordingName)
         recordingName.translatesAutoresizingMaskIntoConstraints = false
+        recordingName.textColor = UIColor.white
         
         NSLayoutConstraint.activate([
             recordingName.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),

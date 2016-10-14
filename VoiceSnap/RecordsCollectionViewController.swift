@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class RecordsCollectionViewController: UIViewController {
     
@@ -31,11 +32,26 @@ class RecordsCollectionViewController: UIViewController {
         return dataSource
     }()
     
+    var audioPlayingDelegate: AudioPlayingDelegate
+    
+    init(audioPlayingDelegate: AudioPlayingDelegate) {
+        self.audioPlayingDelegate = audioPlayingDelegate
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         recordsDataSource.executeFetch()
         collectionView.dataSource = recordsDataSource
+        collectionView.delegate = self
         automaticallyAdjustsScrollViewInsets = false
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(RecordsCollectionViewController.done))
+        navigationItem.rightBarButtonItem = doneButton
     }
 
     override func viewDidLayoutSubviews() {
@@ -50,3 +66,36 @@ class RecordsCollectionViewController: UIViewController {
         ])
     }
 }
+
+
+// MARK: UICollectionViewDelegate
+
+extension RecordsCollectionViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let recording = recordsDataSource.fetchedResultsController.object(at: indexPath)
+        audioPlayingDelegate.play(withRecord: recording)
+    }
+    
+    func done() {
+        dismiss(animated: true, completion: nil)
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

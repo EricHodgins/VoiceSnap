@@ -188,7 +188,7 @@ extension RecordController {
 
 extension RecordController {
     func showRecords() {
-        let recordsController = RecordsCollectionViewController()
+        let recordsController = RecordsCollectionViewController(audioPlayingDelegate: self.audioPlayingDelegate)
         let navController = UINavigationController(rootViewController: recordsController)
         present(navController, animated: true, completion: nil)
     }

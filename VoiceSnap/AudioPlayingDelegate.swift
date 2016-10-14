@@ -45,6 +45,18 @@ class AudioPlayingDelegate: NSObject, AVAudioPlayerDelegate {
         
     }
     
+    func play(withRecord record: Record) {
+        audioURL = record.URLToDocumentsDirectory(withFileName: record.name)
+        createAudioPlayer()
+        let session = AVAudioSession.sharedInstance()
+        do {
+            try session.setCategory(AVAudioSessionCategoryPlayback, with: .defaultToSpeaker)
+        } catch {
+            print(error)
+        }
+        audioPlayer?.play()
+    }
+    
     func createAudioPlayer() {
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: audioURL)
