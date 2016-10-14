@@ -59,6 +59,13 @@ class RecordController: UIViewController {
         button.backgroundColor = UIColor.orange
         return button
     }()
+    
+    lazy var showRecordsButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("SHOW RECORDS", for: .normal)
+        button.backgroundColor = UIColor(colorLiteralRed: 51/255, green: 86/255, blue: 191/255, alpha: 1.0)
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +77,7 @@ class RecordController: UIViewController {
         recordButton.addTarget(self, action: #selector(RecordController.startRecording), for: .touchUpInside)
         playButton.addTarget(self, action: #selector(RecordController.playRecording), for: .touchUpInside)
         saveButton.addTarget(self, action: #selector(RecordController.saveAndRenameRecording), for: .touchUpInside)
+        showRecordsButton.addTarget(self, action: #selector(RecordController.showRecords), for: .touchUpInside)
         
         audioEngine = AVAudioEngine()
         
@@ -86,6 +94,9 @@ class RecordController: UIViewController {
         view.addSubview(saveButton)
         saveButton.translatesAutoresizingMaskIntoConstraints = false
         
+        view.addSubview(showRecordsButton)
+        showRecordsButton.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             playButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             playButton.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 10),
@@ -100,7 +111,12 @@ class RecordController: UIViewController {
             saveButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
             saveButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
             saveButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10),
-            saveButton.heightAnchor.constraint(equalToConstant: 50)
+            saveButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            showRecordsButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            showRecordsButton.topAnchor.constraint(equalTo: recordButton.bottomAnchor, constant: 10),
+            showRecordsButton.heightAnchor.constraint(equalToConstant: 100.0),
+            showRecordsButton.widthAnchor.constraint(equalToConstant: 300)
         ])
     }
     
@@ -162,11 +178,21 @@ extension RecordController {
             
         }
         
-        print(self.fetchedResultsController.fetchedObjects?.count)
+        for photo in self.fetchedResultsController.fetchedObjects! {
+            print(photo.name)
+        }
     }
 }
 
+// MARK: Show Records CollectionView
 
+extension RecordController {
+    func showRecords() {
+        let recordsController = RecordsCollectionViewController()
+        let navController = UINavigationController(rootViewController: recordsController)
+        present(navController, animated: true, completion: nil)
+    }
+}
 
 
 

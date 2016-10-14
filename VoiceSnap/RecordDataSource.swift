@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class RecordDataSource {
+class RecordDataSource: NSObject {
     let collectionView: UICollectionView
     let managedObjectContext = CoreDataController.sharedInstance.managedObjectContext
     let fetchedResultsController: NSFetchedResultsController<Record>
@@ -25,5 +25,28 @@ class RecordDataSource {
         } catch {
             print("Error fetching records.")
         }
+    }
+}
+
+// MARK - UICollectionViewDataSource
+
+extension RecordDataSource: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return fetchedResultsController.sections?.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let section = fetchedResultsController.sections?[section] else { return 0 }
+        
+        return section.numberOfObjects
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecordCell.reuseIdentifier, for: indexPath) as! RecordCell
+        
+        let record = fetchedResultsController.object(at: indexPath)
+        cell.recordingName.text = record.name
+        
+        return cell
     }
 }
