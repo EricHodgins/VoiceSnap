@@ -16,7 +16,8 @@ class RecordController: UIViewController {
     
     var newSavedFileName: String?
     var audioPlayer: AVAudioPlayer!
-    var audioEngine: AVAudioEngine!
+    var audioEngine = AVAudioEngine()
+    var reverbWetDrayPercent: Float!
     
     var audioRecorder: AVAudioRecorder!
     
@@ -39,6 +40,8 @@ class RecordController: UIViewController {
         return url
     }()
     
+    // MARK: - Buttons
+    
     lazy var recordButton: UIButton = {
         let button = UIButton()
         button.setTitle("RECORD", for: .normal)
@@ -50,6 +53,13 @@ class RecordController: UIViewController {
         let button = UIButton()
         button.setTitle("Play", for: .normal)
         button.backgroundColor = UIColor(colorLiteralRed: 44/255, green: 121/255, blue: 64/255, alpha: 1.0)
+        return button
+    }()
+    
+    lazy var playWithEffectsButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Play With Effects", for: .normal)
+        button.backgroundColor = UIColor(colorLiteralRed: 40/255, green: 115/255, blue: 50/255, alpha: 1.0)
         return button
     }()
     
@@ -66,6 +76,16 @@ class RecordController: UIViewController {
         button.backgroundColor = UIColor(colorLiteralRed: 51/255, green: 86/255, blue: 191/255, alpha: 1.0)
         return button
     }()
+    
+    // MARK: - Audio Control Settings
+    
+    lazy var reverbSlider: UISlider = {
+        let slider = UISlider()
+        slider.minimumValue = 0
+        slider.maximumValue = 100
+        slider.isContinuous = true
+        return slider
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +98,8 @@ class RecordController: UIViewController {
         playButton.addTarget(self, action: #selector(RecordController.playRecording), for: .touchUpInside)
         saveButton.addTarget(self, action: #selector(RecordController.saveAndRenameRecording), for: .touchUpInside)
         showRecordsButton.addTarget(self, action: #selector(RecordController.showRecords), for: .touchUpInside)
+        playWithEffectsButton.addTarget(self, action: #selector(RecordController.playAudioWithEffects), for: .touchUpInside)
+        reverbSlider.addTarget(self, action: #selector(RecordController.reverSliderChanged(sender:)), for: UIControlEvents.valueChanged)
         
         audioEngine = AVAudioEngine()
         
@@ -97,15 +119,21 @@ class RecordController: UIViewController {
         view.addSubview(showRecordsButton)
         showRecordsButton.translatesAutoresizingMaskIntoConstraints = false
         
+        view.addSubview(playWithEffectsButton)
+        playWithEffectsButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        view.addSubview(reverbSlider)
+        reverbSlider.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             playButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            playButton.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 10),
-            playButton.heightAnchor.constraint(equalToConstant: 100),
+            playButton.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 5),
+            playButton.heightAnchor.constraint(equalToConstant: 50),
             playButton.widthAnchor.constraint(equalToConstant: 300),
             
             recordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            recordButton.topAnchor.constraint(equalTo: playButton.bottomAnchor, constant: 10),
-            recordButton.heightAnchor.constraint(equalToConstant: 100.0),
+            recordButton.topAnchor.constraint(equalTo: playButton.bottomAnchor, constant: 5),
+            recordButton.heightAnchor.constraint(equalToConstant: 50),
             recordButton.widthAnchor.constraint(equalToConstant: 300),
             
             saveButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
@@ -114,9 +142,19 @@ class RecordController: UIViewController {
             saveButton.heightAnchor.constraint(equalToConstant: 50),
             
             showRecordsButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            showRecordsButton.topAnchor.constraint(equalTo: recordButton.bottomAnchor, constant: 10),
-            showRecordsButton.heightAnchor.constraint(equalToConstant: 100.0),
-            showRecordsButton.widthAnchor.constraint(equalToConstant: 300)
+            showRecordsButton.topAnchor.constraint(equalTo: recordButton.bottomAnchor, constant: 5),
+            showRecordsButton.heightAnchor.constraint(equalToConstant: 50),
+            showRecordsButton.widthAnchor.constraint(equalToConstant: 300),
+            
+            reverbSlider.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            reverbSlider.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
+            reverbSlider.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
+            reverbSlider.topAnchor.constraint(equalTo: showRecordsButton.bottomAnchor, constant: 30),
+            
+            playWithEffectsButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            playWithEffectsButton.widthAnchor.constraint(equalToConstant: 300),
+            playWithEffectsButton.heightAnchor.constraint(equalToConstant: 50),
+            playWithEffectsButton.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -10)
         ])
     }
     
@@ -191,6 +229,18 @@ extension RecordController {
         let recordsController = RecordsCollectionViewController(audioPlayingDelegate: self.audioPlayingDelegate)
         let navController = UINavigationController(rootViewController: recordsController)
         present(navController, animated: true, completion: nil)
+    }
+}
+
+// MARK: Configuring Audio Settings
+
+extension RecordController {
+    func reverSliderChanged(sender: UISlider!) {
+        reverbWetDrayPercent = sender.value
+    }
+    
+    func playAudioWithEffects() {
+        audioPlayingDelegate.playAudioWithEffect(reverbAmount: reverbWetDrayPercent)
     }
 }
 

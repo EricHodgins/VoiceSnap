@@ -11,9 +11,16 @@ import AVFoundation
 
 class AudioPlayingDelegate: NSObject, AVAudioPlayerDelegate {
     
+    var reverb: AVAudioUnitReverb!
+    
     var audioPlayer: AVAudioPlayer?
     var audioEngine: AVAudioEngine?
     var audioURL: URL!
+    
+    lazy var audioFile: AVAudioFile = {
+        let file = try! AVAudioFile(forReading: self.audioURL)
+        return file
+    }()
     
     init(audioPlayer: AVAudioPlayer?, audioEngine: AVAudioEngine?, urlForAudioPath url: URL) {
         self.audioPlayer = audioPlayer
@@ -45,6 +52,7 @@ class AudioPlayingDelegate: NSObject, AVAudioPlayerDelegate {
         
     }
     
+    // For playing when in collectionView
     func play(withRecord record: Record) {
         audioURL = record.URLToDocumentsDirectory(withFileName: record.name)
         createAudioPlayer()
@@ -86,5 +94,75 @@ class AudioPlayingDelegate: NSObject, AVAudioPlayerDelegate {
             return false
         }
     }
+    
+    // Include Sound Effects
+    
+    func playAudioWithEffect(reverbAmount: Float) {
+        audioPlayer!.stop()
+        audioEngine!.stop()
+        audioEngine!.reset()
+        
+        let playerANode = AVAudioPlayerNode()
+        audioEngine!.attach(playerANode)
+        
+        reverb = AVAudioUnitReverb()
+        reverb.loadFactoryPreset(.cathedral)
+        reverb.wetDryMix = reverbAmount
+        audioEngine!.attach(reverb)
+        
+        // Make buffer
+        let buffer = AVAudioPCMBuffer(pcmFormat: audioFile.processingFormat, frameCapacity: AVAudioFrameCount(audioFile.length))
+        
+        do {
+            try audioFile.read(into: buffer)
+        } catch {
+            print(error)
+        }
+        
+        // Connect nodes
+        audioEngine!.connect(playerANode, to: reverb, format: buffer.format)
+        audioEngine!.connect(reverb, to: audioEngine!.outputNode, format: buffer.format)
+        
+        playerANode.scheduleFile(audioFile, at: nil, completionHandler: nil)
+        
+        do {
+            try audioEngine!.start()
+            playerANode.play()
+        } catch {
+            print(error)
+        }
+        
+    }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
