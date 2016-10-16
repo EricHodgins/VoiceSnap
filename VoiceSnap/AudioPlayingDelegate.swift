@@ -12,6 +12,8 @@ import AVFoundation
 class AudioPlayingDelegate: NSObject, AVAudioPlayerDelegate {
     
     var reverb: AVAudioUnitReverb!
+    var distortion: AVAudioUnitDistortion!
+    var effect: AVAudioUnitDelay!
     
     var audioPlayer: AVAudioPlayer?
     var audioEngine: AVAudioEngine?
@@ -102,13 +104,27 @@ class AudioPlayingDelegate: NSObject, AVAudioPlayerDelegate {
         audioEngine!.stop()
         audioEngine!.reset()
         
+        // Player A Node
         let playerANode = AVAudioPlayerNode()
         audioEngine!.attach(playerANode)
         
+        // Reverb Node
         reverb = AVAudioUnitReverb()
         reverb.loadFactoryPreset(.cathedral)
         reverb.wetDryMix = reverbAmount
         audioEngine!.attach(reverb)
+        
+        // Distortion Node
+        distortion = AVAudioUnitDistortion()
+        distortion.loadFactoryPreset(AVAudioUnitDistortionPreset.speechRadioTower)
+        distortion.wetDryMix = 25
+        audioEngine!.attach(distortion)
+        
+        // Effect
+        effect = AVAudioUnitDelay()
+        effect.delayTime = TimeInterval.abs(0.5)
+        audioEngine!.attach(effect)
+        
         
         // Make buffer
         let buffer = AVAudioPCMBuffer(pcmFormat: audioFile.processingFormat, frameCapacity: AVAudioFrameCount(audioFile.length))
@@ -121,7 +137,9 @@ class AudioPlayingDelegate: NSObject, AVAudioPlayerDelegate {
         
         // Connect nodes
         audioEngine!.connect(playerANode, to: reverb, format: buffer.format)
-        audioEngine!.connect(reverb, to: audioEngine!.outputNode, format: buffer.format)
+        audioEngine!.connect(reverb, to: distortion, format: buffer.format)
+        audioEngine!.connect(distortion, to: effect, format: buffer.format)
+        audioEngine!.connect(effect, to: audioEngine!.outputNode, format: buffer.format)
         
         playerANode.scheduleFile(audioFile, at: nil, completionHandler: nil)
         

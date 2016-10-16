@@ -32,13 +32,17 @@ class RecordController: UIViewController {
         return ard
     }()
     
-    var audioURL: URL = {
+    lazy var audioURL: URL = {
+        return self.resetAudioURL()
+    }()
+    
+    func resetAudioURL() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentDirectory = paths.first!
         let url = documentDirectory.appendingPathComponent("TempFileName.m4a")
         
         return url
-    }()
+    }
     
     // MARK: - Buttons
     
@@ -78,6 +82,12 @@ class RecordController: UIViewController {
     }()
     
     // MARK: - Audio Control Settings
+    
+    lazy var reverbLabel: UILabel = {
+        let label = UILabel()
+        label.text = "REVERB SETTING"
+        return label
+    }()
     
     lazy var reverbSlider: UISlider = {
         let slider = UISlider()
@@ -125,6 +135,9 @@ class RecordController: UIViewController {
         view.addSubview(reverbSlider)
         reverbSlider.translatesAutoresizingMaskIntoConstraints = false
         
+        view.addSubview(reverbLabel)
+        reverbLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
             playButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             playButton.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor, constant: 5),
@@ -149,12 +162,15 @@ class RecordController: UIViewController {
             reverbSlider.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             reverbSlider.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10),
             reverbSlider.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10),
-            reverbSlider.topAnchor.constraint(equalTo: showRecordsButton.bottomAnchor, constant: 30),
+            reverbSlider.topAnchor.constraint(equalTo: showRecordsButton.bottomAnchor, constant: 40),
             
             playWithEffectsButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             playWithEffectsButton.widthAnchor.constraint(equalToConstant: 300),
             playWithEffectsButton.heightAnchor.constraint(equalToConstant: 50),
-            playWithEffectsButton.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -10)
+            playWithEffectsButton.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -10),
+            
+            reverbLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            reverbLabel.bottomAnchor.constraint(equalTo: reverbSlider.topAnchor, constant: 3)
         ])
     }
     
@@ -164,6 +180,7 @@ extension RecordController: AVAudioRecorderDelegate {
     func startRecording() {
         
         if recordButton.titleLabel?.text == "RECORD" {
+            audioURL = resetAudioURL()
             playButton.isEnabled = false
             recordButton.setTitle("STOP", for: .normal)
             audioRecordingDelegate.startRecording()
